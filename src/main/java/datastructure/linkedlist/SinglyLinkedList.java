@@ -43,12 +43,17 @@ public class SinglyLinkedList {
         if(index < 0 || index >= getSize()) return null;
 
         SinglyLinkedListNode node = getNode(index);
-        if(getSize() == 1)
+        if(getSize() == 1){
             head = null;
-        else if(index == 0)
-            head = getNode(index+1);
-        else;
-        getNode(index-1).setNext(getNode(index).getNext());
+        }else{
+            if(index == 0){
+                head = getNode(index+1);
+            } else {
+                SinglyLinkedListNode foreNode = getNode(index - 1);
+                SinglyLinkedListNode nextNode = getNode(index).getNext();
+                foreNode.setNext(nextNode);
+            }
+        }
         size--;
         return node;
     }

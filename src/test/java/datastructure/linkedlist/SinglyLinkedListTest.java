@@ -1,8 +1,6 @@
 package datastructure.linkedlist;
 
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 import static org.junit.Assert.*;
 
@@ -62,8 +60,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test(timeout=100)
-    public void testGetIndex()
-    {
+    public void testGetIndex() {
         ll.add('a',0);
         ll.add('b',1);
         ll.add('c',2);
@@ -95,8 +92,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test(timeout=100)
-    public void testAddOutOfBounds()
-    {
+    public void testAddOutOfBounds() {
         assertEquals(ll.add('a',10), null);
         assertEquals(ll.add('a',-1), null);
         ll.add('a',0);
@@ -106,8 +102,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test(timeout=100)
-    public void testDeleteOutOfBounds()
-    {
+    public void testDeleteOutOfBounds() {
         assertEquals(ll.delete(-1), null);
         assertEquals(ll.delete(10), null);
         ll.add('a',0);
@@ -118,8 +113,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test(timeout=100)
-    public void testHeadEdgeCases()
-    {
+    public void testHeadEdgeCases() {
 
         assertEquals(null, ll.getHead());
         ll.add('a',0);
@@ -133,8 +127,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test(timeout=100)
-    public void testNullPointers()
-    {
+    public void testNullPointers() {
         ll.add('a',0);
         ll.add('b',1);
         ll.add('c',2);
@@ -149,8 +142,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test(timeout=100)
-    public void testSizing()
-    {
+    public void testSizing() {
         assertEquals(0, ll.getSize());
         ll.add('a',0);
         assertEquals(1, ll.getSize());
