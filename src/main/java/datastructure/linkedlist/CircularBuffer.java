@@ -29,15 +29,16 @@ public class CircularBuffer {
                 return node;
             }
             CircularBufferNode nextHead = head.getNext();
-            head = nextHead;
+            setHead(nextHead);
             node.setNext(nextHead);
+
             tail.setNext(node);
-            tail = node;
+            setTail(node);
             return node;
         }
 
         tail.setNext(node);
-        tail = node;
+        setTail(node);
         node.setNext(head);
 
         size++;
@@ -54,8 +55,8 @@ public class CircularBuffer {
         this.overflow = overflow;
     }
     private void fillBufferWithOneNode(CircularBufferNode node){
-        head = node;
-        tail = node;
+        setHead(node);
+        setTail(node);
         node.setNext(node);
     }
 
@@ -68,11 +69,11 @@ public class CircularBuffer {
             return node;
         }
         node = getNode(size - 2);
-        tail = node;
+        setTail(node);
         node.setNext(getHead());
 
         size--;
-        setOverflow(false);
+        configOverflow();
         return node;
     }
 
@@ -98,8 +99,16 @@ public class CircularBuffer {
         return head;
     }
 
+    private void setHead(CircularBufferNode head) {
+        this.head = head;
+    }
+
     public CircularBufferNode getTail() {
         return tail;
+    }
+
+    private void setTail(CircularBufferNode tail) {
+        this.tail = tail;
     }
 
     public int getIndex(char data) {
@@ -154,8 +163,6 @@ public class CircularBuffer {
         return str;
     }
 }
-
-
 
 class CircularBufferNode {
     private char data;
